@@ -8,3 +8,5 @@ def sort_word(input_string):
 
 
 print(sort_word("Hello what is up world"))
+
+get_string= str(input("Enter any string "))
