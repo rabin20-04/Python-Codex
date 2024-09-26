@@ -44,4 +44,4 @@ Welcome to the Guessing Game! This is a fun and interactive game where you can t
 
 Contributions are welcome! If you would like to contribute to this project, please fork the repository and submit a pull request.
 
-Thank you for playing the Guessing Game! Enjoy guessing and have fun!
+### Thank you for playing the Guessing Game! Enjoy guessing and have fun!
