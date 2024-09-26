@@ -19,12 +19,14 @@ def guess_game():
                 print("Hey Buddy You entered {} ".format(a))
                 print("Guess the number between 2 to 10!")
                 continue
-            clear_screen()
             if isinstance(a, int):
                 if a == num:
+                    clear_screen()
+
                     print("Amazing You guessed the target")
                     break
                 else:
+                    clear_screen()
                     print("Nope Try again! \nThe target was {}".format(num))
         except ValueError:
             clear_screen()
@@ -50,12 +52,17 @@ def steady_random():
             if isinstance(a, int):
                 print("You entered : ", a)
                 if a == c:
+                    clear_screen()
                     print("Amazing You guessed the target")
                     break
 
                 elif a < c:
+                    clear_screen()
+
                     print("Ah Your input was Low!\nIncrease the value")
                 else:
+                    clear_screen()
+
                     print("Oh Too High! \nDecrease your values")
 
         except ValueError:
@@ -63,19 +70,22 @@ def steady_random():
             print("HUh that was not a number :( \n Enter an integer!")
 
 
-try:
-    b = int(
-        input(
-            "Which game do you want to play? \n 1)Steady guessing game \n 2)Always random\n "
+b = 0
+while b != 3:
+    print("\nWelcome to the main menu")
+    try:
+        b = int(
+            input(
+                "Which game do you want to play? \n 1)Steady guessing game \n 2)Always random\n 3)Exit\n  "
+            )
         )
-    )
-    if isinstance(b, int):
         clear_screen()
-        if b == 1:
-            steady_random()
-            clear_screen()
-        elif b == 2:
-            guess_game()
-            clear_screen()
-except ValueError:
-    print("Not a valid choice!")
+        if isinstance(b, int):
+            if b == 1:
+                steady_random()
+            elif b == 2:
+                guess_game()
+            elif b == 3:
+                print("Thank you for playing! Goodbye!")
+    except ValueError:
+        print("Not a valid choice!")
