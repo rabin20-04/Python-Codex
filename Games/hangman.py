@@ -45,43 +45,6 @@ car_brands = [
 cryptocurrencies = ["bitcoin", "ethereum", "dogecoin", "litecoin", "ripple"]
 
 
-def main():
-    menu_option = 0
-    while menu_option != 5:
-        try:
-            print("\nWelcome to Hangman Game")
-            menu_option = int(
-                input(
-                    "Which subject you like the most?\n 1) Planets\n 2) Countries\n 3) Car_brands\n 4) Cryptocurrencies\n 5) Exit \nChoice: "
-                )
-            )
-            if menu_option == 1:
-                clear_screen()
-                print("Guess the name of the Planet")
-                program_handler(random.choice(planets))
-            elif menu_option == 2:
-                clear_screen()
-                print("Guess the name of the Country")
-                program_handler(random.choice(countries))
-            elif menu_option == 3:
-                clear_screen()
-                print("Guess the name of the Car_brand")
-                program_handler(random.choice(car_brands))
-            elif menu_option == 4:
-                clear_screen()
-                print("Guess the name of the Cryptocurrency")
-                program_handler(random.choice(cryptocurrencies))
-            elif menu_option == 5:
-                clear_screen()
-                print("Thank for playing! ")
-            if menu_option > 5 or menu_option < 1:
-                raise ValueError
-
-        except ValueError:
-            clear_screen()
-            print("!!!Enter valid choice please :) ")
-
-
 def display_man(wrong_guesses):
     print("************")
     for line in hangman[wrong_guesses]:
@@ -140,6 +103,43 @@ def program_handler(get_choice):
             display_answer(answer)
             print("YOU LOSE!")
             is_running = False
+
+
+def main():
+    menu_option = 0
+    while menu_option != 5:
+        try:
+            print("\nWelcome to Hangman Game")
+            menu_option = int(
+                input(
+                    "Which subject you like the most?\n 1) Planets\n 2) Countries\n 3) Car_brands\n 4) Cryptocurrencies\n 5) Exit \nChoice: "
+                )
+            )
+            if menu_option == 1:
+                clear_screen()
+                print("Guess the name of the Planet")
+                program_handler(random.choice(planets))
+            elif menu_option == 2:
+                clear_screen()
+                print("Guess the name of the Country")
+                program_handler(random.choice(countries))
+            elif menu_option == 3:
+                clear_screen()
+                print("Guess the name of the Car_brand")
+                program_handler(random.choice(car_brands))
+            elif menu_option == 4:
+                clear_screen()
+                print("Guess the name of the Cryptocurrency")
+                program_handler(random.choice(cryptocurrencies))
+            elif menu_option == 5:
+                clear_screen()
+                print("Thank for playing! ")
+            if menu_option > 5 or menu_option < 1:
+                raise ValueError
+
+        except ValueError:
+            clear_screen()
+            print("!!!Enter valid choice please :) ")
 
 
 if __name__ == "__main__":
