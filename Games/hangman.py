@@ -24,63 +24,112 @@ enter your choice : list of words   we can select type like fruits or pc brand o
 
 """
 
-Planets = ["Neptune", "Earth", "Mars", "Mercury"]
-Countries = ["Canada", "Australia", "Japan"]
+planets = ["neptune", "earth", "mars", "mercury"]
+countries = ["canada", "australia", "japan"]
 car_brands = [
-    "Tesla",
-    "BMW",
-    "Toyota",
-    "Mercedes-Benz",
-    "Audi",
-    "Ford",
-    "Chevrolet",
-    "Honda",
-    "Hyundai",
-    "Kia",
-    "Nissan",
-    "Porsche",
-    "Ferrari",
-    "Lamborghini",
+    "tesla",
+    "bmw",
+    "toyota",
+    "mercedesbenz",
+    "audi",
+    "ford",
+    "chevrolet",
+    "honda",
+    "hyundai",
+    "kia",
+    "nissan",
+    "porsche",
+    "ferrari",
+    "lamborghini",
 ]
-cryptocurrencies = ["Bitcoin", "Ethereum", "Dogecoin", "Litecoin", "Ripple"]
+cryptocurrencies = ["bitcoin", "ethereum", "dogecoin", "litecoin", "ripple"]
 
 
-# menu_option = 0
-# while menu_option != 5:
-#     try:
-#         print("Welcome to Hangman Game")
-#         menu_option = int(
-#             input(
-#                 "Which subject you like the most?\n 1) Planets\n 2) Countries\n 3) Car_brands\n 4) Cryptocurrencies\n 5) Exit \nChoice: "
-#             )
-#         )
-#         if menu_option == 1:
-#             pass
-#         if menu_option == 2:
-#             pass
-#         if menu_option == 3:
-#             pass
-#         if menu_option == 4:
-#             pass
-#         if menu_option == 5:
-#             clear_screen()
-#             print("Thank for playing! ")
+def main():
+    menu_option = 0
+    while menu_option != 5:
+        try:
+            print("\nWelcome to Hangman Game")
+            menu_option = int(
+                input(
+                    "Which subject you like the most?\n 1) Planets\n 2) Countries\n 3) Car_brands\n 4) Cryptocurrencies\n 5) Exit \nChoice: "
+                )
+            )
+            if menu_option == 1:
+                program_handler(random.choice(planets))
+            if menu_option == 2:
+                program_handler(random.choice(countries))
+            if menu_option == 3:
+                program_handler(random.choice(car_brands))
+            if menu_option == 4:
+                program_handler(random.choice(cryptocurrencies))
+            if menu_option == 5:
+                clear_screen()
+                print("Thank for playing! ")
 
-#     except ValueError:
-#         clear_screen()
-#         print("Enter valid choice please :) ")
-
-
-hangman_art = {
-    0: ("   ", "   ", "   "),
-    1: (" o ", "   ", "   "),
-    2: (" o ", " | ", "   "),
-    3: (" o ", "/| ", "   "),
-    4: (" o ", "/|\\", "   "),
-    5: (" o ", "/|\\", "/  "),
-    6: (" o ", "/|\\", "/ \\"),
-}
+        except ValueError:
+            clear_screen()
+            print("Enter valid choice please :) ")
 
 
-for i in hangman_art[2]:
-    print(i)
+def display_man(wrong_guesses):
+    print("************")
+    for line in hangman_art[wrong_guesses]:
+        print(line)
+    print("************")
+    if wrong_guesses == 6:
+        print("Last Guess!")
+
+
+def display_hint(hint):
+    print(" ".join(hint))
+
+
+def display_answer(answer):
+    print(" ".join(answer))
+
+
+def program_handler(get_choice):
+    answer = get_choice
+
+    hint = ["_"] * len(answer)
+    wrong_guesses = 0
+    guessed_letters = set()
+    is_running = True
+
+    while is_running:
+        display_man(wrong_guesses)
+        display_hint(hint)
+        guess = input("Enter a letter: ").lower()
+
+        if len(guess) != 1 or not guess.isalpha():
+            print("Invalid input")
+            continue
+
+        if guess in guessed_letters:
+            print(f"{guess} is already guessed")
+            continue
+
+        guessed_letters.add(guess)
+
+        if guess in answer:
+            for i in range(len(answer)):
+                if answer[i] == guess:
+                    hint[i] = guess
+        else:
+            wrong_guesses += 1
+
+        if "_" not in hint:
+            display_man(wrong_guesses)
+            display_answer(answer)
+            print("YOU WIN!")
+            is_running = False
+        elif wrong_guesses >= len(hangman_art) - 1:
+            display_man(wrong_guesses)
+            display_answer(answer)
+            print("YOU LOSE!")
+            is_running = False
+
+
+if __name__ == "__main__":
+    main()
