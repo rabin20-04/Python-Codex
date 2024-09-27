@@ -1,7 +1,7 @@
 import random  # noqa
 import os
 
-hangman_art = {
+hangman = {
     0: ("       ", "       ", "       "),
     1: ("     o ", "       ", "       "),
     2: ("     o ", "     | ", "       "),
@@ -56,29 +56,37 @@ def main():
                 )
             )
             if menu_option == 1:
+                clear_screen()
+                print("Guess the name of the Planet")
                 program_handler(random.choice(planets))
-            if menu_option == 2:
+            elif menu_option == 2:
+                clear_screen()
+                print("Guess the name of the Country")
                 program_handler(random.choice(countries))
-            if menu_option == 3:
+            elif menu_option == 3:
+                clear_screen()
+                print("Guess the name of the Car_brand")
                 program_handler(random.choice(car_brands))
-            if menu_option == 4:
+            elif menu_option == 4:
+                clear_screen()
+                print("Guess the name of the Cryptocurrency")
                 program_handler(random.choice(cryptocurrencies))
-            if menu_option == 5:
+            elif menu_option == 5:
                 clear_screen()
                 print("Thank for playing! ")
+            if menu_option > 5 or menu_option < 1:
+                raise ValueError
 
         except ValueError:
             clear_screen()
-            print("Enter valid choice please :) ")
+            print("!!!Enter valid choice please :) ")
 
 
 def display_man(wrong_guesses):
     print("************")
-    for line in hangman_art[wrong_guesses]:
+    for line in hangman[wrong_guesses]:
         print(line)
     print("************")
-    if wrong_guesses == 6:
-        print("Last Guess!")
 
 
 def display_hint(hint):
@@ -91,17 +99,19 @@ def display_answer(answer):
 
 def program_handler(get_choice):
     answer = get_choice
-
+    attempt = 0
     hint = ["_"] * len(answer)
     wrong_guesses = 0
     guessed_letters = set()
     is_running = True
 
     while is_running:
+        if wrong_guesses == 6:
+            print("\n!!!Last Guess\n")
         display_man(wrong_guesses)
         display_hint(hint)
-        guess = input("Enter a letter: ").lower()
-
+        guess = input("\nEnter a letter: ").lower()
+        print("\nAttempt -- {}".format(attempt))
         if len(guess) != 1 or not guess.isalpha():
             print("Invalid input")
             continue
@@ -111,20 +121,21 @@ def program_handler(get_choice):
             continue
 
         guessed_letters.add(guess)
-
+        attempt += 1
         if guess in answer:
             for i in range(len(answer)):
                 if answer[i] == guess:
                     hint[i] = guess
         else:
             wrong_guesses += 1
-
         if "_" not in hint:
+            clear_screen()
             display_man(wrong_guesses)
             display_answer(answer)
+            print('Guessed in "{}" attempts '.format(attempt))
             print("YOU WIN!")
             is_running = False
-        elif wrong_guesses >= len(hangman_art) - 1:
+        elif wrong_guesses >= len(hangman) - 1:
             display_man(wrong_guesses)
             display_answer(answer)
             print("YOU LOSE!")
