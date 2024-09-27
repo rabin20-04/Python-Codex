@@ -11,7 +11,6 @@ This is a text-based **Hangman Game** built in Python. The game challenges playe
 3. For each incorrect guess, the hangman drawing advances. You have 7 incorrect guesses before the game ends!
 
 4. If you guess all letters correctly before the hangman drawing is complete, you win!
-   .
 
 ## Installation & Execution
 

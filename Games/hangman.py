@@ -1,4 +1,4 @@
-import random  # noqa
+import random
 import os
 
 hangman = {
@@ -16,13 +16,6 @@ hangman = {
 def clear_screen():
     os.system("clear")
 
-
-"""
-enter your choice : list of words   we can select type like fruits or pc brand or something
--list of these
-
-
-"""
 
 planets = ["neptune", "earth", "mars", "mercury"]
 countries = ["canada", "australia", "japan"]
