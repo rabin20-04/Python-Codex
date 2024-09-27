@@ -8,7 +8,7 @@ def clear_screen():
 
 def guess_game():
     print(
-        "Welcome to the Guessing Game \nWe have a random number and you have to guess it!\nNew number will be generated each time you guess wrong.\nLet's start the game!"
+        "Welcome to the Guessing Game \nWe have a random number and you have to guess it!\nNew number will be generated each time you make a wrong guess.\nLet's start the game!"
     )
     while True:
         try:
@@ -22,7 +22,7 @@ def guess_game():
             if isinstance(user_guess, int):
                 if user_guess == target_number:
                     clear_screen()
-                    print("Amazing! You guessed the target.")
+                    print('Amazing! You guessed the target"{}"'.format(user_guess))
                     break
                 else:
                     clear_screen()
@@ -50,7 +50,7 @@ def steady_random():
                 print("You entered: ", user_guess)
                 if user_guess == constant_number:
                     clear_screen()
-                    print("Amazing! You guessed the target.")
+                    print('Amazing! You guessed the target "{}".'.format(user_guess))
                     break
                 elif user_guess < constant_number:
                     clear_screen()
@@ -69,7 +69,7 @@ while menu_option != 3:
     try:
         menu_option = int(
             input(
-                "Which game do you want to play? \n1) Steady Guessing Game \n2) Always Random\n3) Exit\n  "
+                "Which game do you want to play? \n1) Steady Random number Guessing \n2) Always Random\n3) Exit\nChoice: "
             )
         )
         clear_screen()
