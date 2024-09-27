@@ -1,4 +1,16 @@
+import random  # noqa
 import os
+
+hangman_art = {
+    0: ("       ", "       ", "       "),
+    1: ("     o ", "       ", "       "),
+    2: ("     o ", "     | ", "       "),
+    3: ("     o ", "    /| ", "       "),
+    4: ("     o ", "    /|\\", "       "),
+    5: ("     o ", "    /|\\", "    /  "),
+    6: ("     o ", "    /|\\", "    / \\"),
+    7: ("     o/", "    /|\\", "    / \\"),
+}
 
 
 def clear_screen():
@@ -33,27 +45,42 @@ car_brands = [
 cryptocurrencies = ["Bitcoin", "Ethereum", "Dogecoin", "Litecoin", "Ripple"]
 
 
-menu_option = 0
-while menu_option != 5:
-    try:
-        print("Welcome to Hangman Game")
-        menu_option = int(
-            input(
-                "Which subject you like the most?\n 1) Planets\n 2) Countries\n 3) Car_brands\n 4) Cryptocurrencies\n 5) Exit \nChoice: "
-            )
-        )
-        if menu_option == 1:
-            pass
-        if menu_option == 2:
-            pass
-        if menu_option == 3:
-            pass
-        if menu_option == 4:
-            pass
-        if menu_option == 5:
-            clear_screen()
-            print("Thank for playing! ")
+# menu_option = 0
+# while menu_option != 5:
+#     try:
+#         print("Welcome to Hangman Game")
+#         menu_option = int(
+#             input(
+#                 "Which subject you like the most?\n 1) Planets\n 2) Countries\n 3) Car_brands\n 4) Cryptocurrencies\n 5) Exit \nChoice: "
+#             )
+#         )
+#         if menu_option == 1:
+#             pass
+#         if menu_option == 2:
+#             pass
+#         if menu_option == 3:
+#             pass
+#         if menu_option == 4:
+#             pass
+#         if menu_option == 5:
+#             clear_screen()
+#             print("Thank for playing! ")
 
-    except ValueError:
-        clear_screen()
-        print("Enter valid choice please :) ")
+#     except ValueError:
+#         clear_screen()
+#         print("Enter valid choice please :) ")
+
+
+hangman_art = {
+    0: ("   ", "   ", "   "),
+    1: (" o ", "   ", "   "),
+    2: (" o ", " | ", "   "),
+    3: (" o ", "/| ", "   "),
+    4: (" o ", "/|\\", "   "),
+    5: (" o ", "/|\\", "/  "),
+    6: (" o ", "/|\\", "/ \\"),
+}
+
+
+for i in hangman_art[2]:
+    print(i)

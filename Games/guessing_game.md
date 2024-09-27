@@ -37,6 +37,7 @@ Welcome to the Guessing Game! This is a fun and interactive game where you can t
 ## Requirements
 
 - Python 3.x
+
 - Random module (comes with Python standard library)
 - OS module (comes with Python standard library)
 

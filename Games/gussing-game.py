@@ -22,7 +22,7 @@ def guess_game():
             if isinstance(user_guess, int):
                 if user_guess == target_number:
                     clear_screen()
-                    print('Amazing! You guessed the target"{}"'.format(user_guess))
+                    print('Amazing! You guessed the target" {}"'.format(user_guess))
                     break
                 else:
                     clear_screen()
