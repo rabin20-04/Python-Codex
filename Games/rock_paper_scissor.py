@@ -33,7 +33,7 @@ def main():
         ):
             user_result = "rock"
             # or
-            # if user_input.lower() in ["1", "r", "rock"]:
+            # if user_input.lower() -in ["1", "r", "rock"]:
 
         elif (
             user_input == "2"
