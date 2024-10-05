@@ -6,7 +6,7 @@ Welcome to the Guessing Game! This is a fun and interactive game where you can t
 
 ### 1. Always Random Mode
 
-- In this mode, the game generates a new random number between **2 to 10** every time you guess wrong.
+- In this mode,the game generates a new random number between **2 to 10** every time you guess wrong.
 - Your objective is to guess the target number correctly to win the game!
 - If you input an invalid number (outside the range), the game will prompt you to enter a valid guess.
 
